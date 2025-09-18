@@ -1,0 +1,83 @@
+<html>
+<style>
+    :root {
+        --vegetable-px: 37px;
+    }
+
+    h1 {
+        text-align: center;
+        margin: 5px;
+    }
+
+    .vegetables-wrap {
+        height: var(--vegetable-px);
+        margin: 0px 5px;
+        background-color: #eee;
+    }
+
+    .vegetables-left,
+    .vegetables-right {
+        height: var(--vegetable-px);
+        text-align: center;
+        line-height: var(--vegetable-px);
+        padding: 0 15px;
+    }
+
+    .vegetables-left:hover,
+    .vegetables-right:hover {
+        background-color: #aaa;
+    }
+
+    .vegetables-left {
+        float: left;
+    }
+
+    .vegetables-right {
+        float: right;
+    }
+
+    #crazy-wrap {
+        margin: 15px 30px 0px 30px
+    }
+    h2 {
+        margin:0;
+    }
+    a {
+        text-decoration: none;
+    }
+    #P0-wrap {
+        width:250px;
+        height:50px;
+        text-align: center;
+        margin: 5px;
+        line-height: 50px;
+        background-color: #eee;
+        display : inline-block;
+    }
+
+</style>
+<script src="data.js"></script>
+<head>
+    <title id="title"></title>
+</head>
+<script>
+function update(x){
+    document.getElementById("crazy-wrap").innerHTML = pages[x].content();
+}
+window.onload = ()=>(update(0));
+</script>
+<body>
+    <div class="vegetables-wrap">
+        <div class="vegetables-left">wiki</div>
+        <div class="vegetables-left">文章</div>
+        <div class="vegetables-left">网站</div>
+        <div class="vegetables-left">444</div>
+        <div class="vegetables-left">555</div>
+        <div class="vegetables-right">
+            !!!
+        </div>
+    </div>
+    <div id="crazy-wrap"></div>
+</body>
+
+</html>
