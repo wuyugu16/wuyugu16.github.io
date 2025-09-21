@@ -42,13 +42,22 @@
         margin: 15px 30px 0px 30px
     }
     a {
-        text-decoration: none;
+        text-decoration: underline dotted green;
         color:#333;
         transition: all 0.5s ease;
     }
     a:hover {
+        text-decoration:none;
         color: #aaa;
         cursor: pointer;
+    }
+    a.censored{
+        text-decoration:none;
+        background-color:black;
+        color:black;
+    }
+    a.censored:hover {
+        background-color: white;
     }
     .P0-fieldset {
         width:200px;
@@ -64,7 +73,15 @@
 <script>
 function update(x){
     var text = pages[x].content();
-    document.getElementById("crazy-wrap").innerHTML = text;
+    document.getElementById("crazy-wrap").innerHTML = 
+        `<h2>
+            <span style="color:${classcolor[pages[x].class]}">
+                [${classname[pages[x].class]}]
+            </span>
+            ${pages[x].title}
+        </h2>
+        <hr/>`+text;
+    document.title = pages[x].title;
 }
 function delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -72,7 +89,7 @@ function delay(ms) {
 window.onload = ()=>{
     update(0);
     document.getElementById("vr-button").addEventListener("click",async ()=>{
-        document.getElementById("vr-button").value = "一";
+        document.getElementById("vr-button").value += "一";
         await delay(250);
         document.getElementById("vr-button").value += "二";
         await delay(250);
@@ -81,7 +98,7 @@ window.onload = ()=>{
         document.getElementById("vr-button").value += "跳";
         update(document.getElementById("vr-input").value);
         await delay(300);
-        document.getElementById("vr-button").value = "跳";
+        document.getElementById("vr-button").value += "跳";
         await delay(250);
         document.getElementById("vr-button").value += "进";
         await delay(250);
@@ -89,7 +106,7 @@ window.onload = ()=>{
         await delay(800);
         document.getElementById("vr-button").value += "缸";
         await delay(800);
-        document.getElementById("vr-button").value = "启动！";
+        document.getElementById("vr-button").value += "启动！";
     })
 };
 </script>

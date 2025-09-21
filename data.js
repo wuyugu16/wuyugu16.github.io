@@ -13,9 +13,21 @@ var classname = [
     "",
     "",
     "文章",
-    "工具",
+    "入物",
     "系统"
 ];
+function getPara(x){
+    var res="";
+    x.forEach(item=>{
+        res += `<h3>${item[0]}</h3>${item[1].replace(/\[(.*?)\]/g,(FF,g1)=>{
+            var arr = Array
+                .from({length:pages.length},(_,i)=>i)
+                .filter(item=>pages[item].title==g1);
+            return `<a ${arr.length==1?`class="censored"`:""} onclick="update(${arr[0]})">${g1}</a>`;
+        })}`
+    });
+    return res;
+}
 var pages = [
     {
         title:"首页",
@@ -36,11 +48,10 @@ var pages = [
             };
             get(0,"梗");
             get(4,"文章");
-            //get(5,"工具");
+            get(5,"入物");
             return res;
         }
     },
-
     {
         title:"wiki中心页",
         class:6,
@@ -58,17 +69,39 @@ var pages = [
         }
     },
     {
-        title:"再来一遍",
+        title:"程yuan",
+        class:5,
+        content:()=>{
+            return getPara([
+                ["简介","十七班班主任，详见[南湖史]"],
+                ["外号","[程主席],[cy]"],
+                ["语录","[再来一遍],[两遍]"],
+                ["人物关系","父亲——[卞策]"]
+            ])
+        }
+    },
+    {
+        title:"cy",
         class:0,
         content:()=>{
 
         }
     },
     {
+        title:"再来一遍",
+        class:0,
+        content:()=>{
+            return getPara([
+                ["背景","见[cy]"],
+                ["来源","[cy]在2025年运动会期间的逆天猎奇的语录之一"],
+            ])
+        }
+    },
+    {
         title:"南湖史",
         class:4,
         content:()=>{
-            return "测测测测";
+            return "";
         }
     }
 ];
