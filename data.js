@@ -76,12 +76,11 @@ var pages = [
             return res;
         }
     },
-    {title:"程yuan", //done
+    {title:"程媛", //done
         class:5,
         content:()=>{
             return getPara([
-                ["真实简介","十七班班主任"],
-                ["简介","前五代[人妖]，详见[南湖史]"],
+                ["简介","十七班班主任"],
                 ["外号","[程主席],[cy]"],
                 ["语录","[再来一遍],[两遍]"],
                 ["人物关系","父亲——[卞策]"]
@@ -107,7 +106,12 @@ var pages = [
         }
     },
     {title:"祁乌芒",
-        class:5
+        class:5,
+        content:()=>{
+            return getPara([
+                ["来历","一只南极来的企鹅妖，化名祁赫然来到十八班"]
+            ])
+        }
     },
     {title:"南湖史",
         class:4,
