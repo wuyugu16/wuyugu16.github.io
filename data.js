@@ -76,7 +76,13 @@ var pages = [
             return res;
         }
     },
-    {title:"程媛", //done
+    {title:"libs",
+        class:6,
+        content:()=>{
+            return `作者能找到的所有的与班级有关的资料，包括策划案，ppt，以及刘星的百梗集。在<a href="./libs.zip">这里</a>下载`;
+        }
+    }
+    /*{title:"程媛", //done
         class:5,
         content:()=>{
             return getPara([
@@ -146,5 +152,5 @@ var pages = [
 <p>回到家的B把桌子上的苹果吃了，又翘起了二郎腿。他心中总觉得有什么事没干，算了已经报仇了，又能怎样呢？[P]回到家，看着一副人间惨剧，痛哭着说：“我会找到你的！”</p>
 <a onclick="update()">To be continued.</a>`;
         }
-    }
+    }*/
 ];
