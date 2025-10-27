@@ -57,6 +57,10 @@
         height:100px;
         margin:10px;
     }
+    .P-fieldset {
+        width:250px;
+        padding:15px;
+    }
 </style>
 <script src="data.js"></script>
 <head>
@@ -77,12 +81,14 @@ function update(x){
             var arr = Array
                 .from({length:pages.length},(_,i)=>i)
                 .filter(item=>pages[item].title==g1);
+            if(arr.length==0)return `<a style="color:red">${g2}</a>`;
             return `<a onclick="update(${arr[0]})">${g2}</a>`;
         })
         .replace(/\[(.*?)\]/g,(FF,g1)=>{
             var arr = Array
                 .from({length:pages.length},(_,i)=>i)
                 .filter(item=>pages[item].title==g1);
+            if(arr.length==0)return `<a style="color:red">${g1}</a>`;
             return `<a onclick="update(${arr[0]})">${g1}</a>`;
         });
     document.title = pages[x].title;
