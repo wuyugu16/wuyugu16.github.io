@@ -16,5 +16,3 @@ var classname = [
     "入物",
     "系统"
 ];
-import { funList } from "./modules/wiki/fun.mjs";
-import { personPages } from "./modules/wiki/person.mjs";

@@ -1,3 +1,25 @@
+export const articleList = {
+    "berzhuan1":"ber传 ep.1"
+}
+export const articleIntroduction = {
+    "berzhuan":"。。。"
+}
+
+export const funList = {
+    "SWD" : "SWD",
+    "suoweide" : "所谓的",
+    "embmq" : "耳膜爆鸣器",
+    "zlyb" : "再来一遍"
+}
+export const funIntroduction = {
+    "SWD" : [
+        ["介绍","。。。"]
+    ],
+    "suoweide" : [
+
+    ]
+}
+
 export const personList = {
 	"01": "孙榕谦",
 	"02": "王一菡",
@@ -71,3 +93,7 @@ export const personList = {
     "xzq": "",
     "bsq": "",
 };
+export const personIntroduction = {
+    "01" : "..."
+};
+
