@@ -8,15 +8,15 @@ export const articleIntroduction = {
 export const funList = {
     "SWD" : "SWD",
     "suoweide" : "所谓的",
-    "embmq" : "耳膜爆鸣器",
-    "zlyb" : "再来一遍"
+    //"embmq" : "耳膜爆鸣器",
+    //"zlyb" : "再来一遍"
 }
 export const funIntroduction = {
     "SWD" : [
         ["介绍","。。。"]
     ],
     "suoweide" : [
-
+		["...","..."]
     ]
 }
 
@@ -94,6 +94,91 @@ export const personList = {
     "bsq": "",
 };
 export const personIntroduction = {
-    "01" : "..."
+	"01": "...",
+	"02": "...",
+	"03": "...",
+	"04": "...",
+	"05": "...",
+	"06": "...",
+	"07": "...",
+	"08": "...",
+	"09": "...",
+	"10": "...",
+	"11": "...",
+	"12": "...",
+	"13": "...",
+	"14": "...",
+	"15": "...",
+	"16": "...",
+	"17": "...",
+	"18": "...",
+	"19": "...",
+	"20": "...",
+	"21": "...",
+	"22": "...",
+	"23": "...",
+	"24": "...",
+	"25": "...",
+	"26": "...",
+	"27": "...",
+	"28": "...",
+	"29": "...",
+	"30": "...",
+	"31": "...",
+	"32": "...",
+	"33": "...",
+	"34": "...",
+	"35": "...",
+	"36": "...",
+	"37": "...",
+	"38": "...",
+	"39": "...",
+	"40": "...",
+	"41": "...",
+	"42": "...",
+	"43": "...",
+	"44": "...",
+	"45": "...",
+	"46": "...",
+	"47": "...",
+	"48": "...",
+	"49": "...",
+	"50": "...",
+
+    "jc": "...",
+    "jxy": "...",
+    "gb": "...",
+    "ls": "...",
+    "ltt": "...",
+    "zyt": "...",
+    "sff": "...",
+    "gy": "...",
+    "bx": "...",
+    "zhm": "...",
+    "bc": "...",
+    "cy": "...",
+    "lzj": "...",
+    "wzl": "...",
+    "zx": "...",
+    
+    "yjk": "...",
+    "gxy": "...",
+    "xzq": "...",
+    "bsq": "...",
 };
 
+export function prefixKeys(obj, str) {
+	const keys = Object.keys(obj);
+	for (const key of keys) {
+		const value = obj[key];
+		delete obj[key];
+		obj[str + key] = value;
+	}
+}
+
+prefixKeys(articleList,"Article.");
+prefixKeys(articleIntroduction,"Article.");
+prefixKeys(funList,"Fun.");
+prefixKeys(funIntroduction,"Fun.");
+prefixKeys(personList,"Person.");
+prefixKeys(personIntroduction,"Person.");

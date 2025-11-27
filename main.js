@@ -1,3 +1,5 @@
+import {pages} from "./modules/pages.mjs";
+console.log(pages);
 var classcolor = [
     "#111199",
     "#119911",

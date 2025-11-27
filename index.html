@@ -51,18 +51,8 @@
         color: green;
         cursor: pointer;
     }
-    .P0-fieldset {
-        width:200px;
-        display : inline-block;
-        height:100px;
-        margin:10px;
-    }
-    .P-fieldset {
-        width:250px;
-        padding:15px;
-    }
 </style>
-<script src="data.js"></script>
+<script  type="module" src="main.js"></script>
 <head>
     <title id="title"></title>
 </head>
@@ -102,7 +92,7 @@ window.setInterval(function() {
         temp0[i].innerHTML = btoa((Math.random()*1000000).toString(36)).slice(1,5);
     }
 },30)
-window.onload = ()=>{
+/*window.onload = ()=>{
     update(0);
     document.getElementById("vr-button").addEventListener("click",async ()=>{
         document.getElementById("vr-button").value = "一";
@@ -124,7 +114,7 @@ window.onload = ()=>{
         await delay(800);
         document.getElementById("vr-button").value = "启动！";
     })
-};
+};*/
 </script>
 <body>
     <div class="vegetables-wrap">
