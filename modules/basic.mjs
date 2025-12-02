@@ -1,8 +1,24 @@
-export const articleList = {
-    "berzhuan1":"ber传 ep.1"
+export function getText(x){
+	var res="";
+	x.forEach(item=>{
+		if(item[1])
+			res += `<h3>${item[0]}</h3>${item[1]}`;
+	});
+	return res;
 }
+
+
+export const articleList = {
+    "berzhuan1":"ber传 ep.1",
+    "berzhuan2":"ber传 ep.2",
+    "berzhuan3":"ber传 ep.3",
+    "berzhuan4":"ber传 ep.4",
+}//7475498190005668
 export const articleIntroduction = {
-    "berzhuan":"。。。"
+    "berzhuan1":"。。。",
+    "berzhuan2":"。。。",
+    "berzhuan3":"。。。",
+    "berzhuan4":"。。。",
 }
 
 export const funList = {
@@ -167,6 +183,15 @@ export const personIntroduction = {
     "bsq": "...",
 };
 
+export const privateList = {
+	"zizhi":"自我指涉",
+}
+export const privateIntroduction = {
+	"zizhi":getText([
+		["文字类","这句话的笔画数为七十七画"]
+	])
+}
+
 export function prefixKeys(obj, str) {
 	const keys = Object.keys(obj);
 	for (const key of keys) {
@@ -182,3 +207,5 @@ prefixKeys(funList,"Fun.");
 prefixKeys(funIntroduction,"Fun.");
 prefixKeys(personList,"Person.");
 prefixKeys(personIntroduction,"Person.");
+prefixKeys(privateList,"Private.");
+prefixKeys(privateIntroduction,"Private.");

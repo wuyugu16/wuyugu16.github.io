@@ -2,6 +2,10 @@
 <style>
     :root {
         --vegetable-px: 37px;
+        --col-333: #334455;
+        --col-aaa: #aabbcc;
+        --col-eee: #e0e8ff;
+        color : var(--col-333)
     }
 
     h1 {
@@ -12,7 +16,7 @@
     .vegetables-wrap {
         height: var(--vegetable-px);
         margin: 0px 5px;
-        background-color: #eee;
+        background-color: var(--col-eee);
     }
 
     .vegetables-left,
@@ -21,13 +25,6 @@
         text-align: center;
         line-height: var(--vegetable-px);
         padding: 0 15px;
-        transition: all 0.5s ease;
-    }
-
-    .vegetables-left:hover,
-    .vegetables-right:hover {
-        background-color: #aaa;
-        cursor: pointer;
     }
 
     .vegetables-left {
@@ -42,7 +39,7 @@
         margin: 15px 30px 0px 30px
     }
     a {
-        color:#333;
+        color:var(--col-333);
         text-decoration: underline dotted green;
         transition: all 0.5s ease;
     }
@@ -51,81 +48,38 @@
         color: green;
         cursor: pointer;
     }
+    .lt-box {
+        width: 200px;
+        height:80px;
+        background-color: var(--col-eee);
+        padding : 15px;
+        margin: 8px;
+    }
+    .able-click {
+        background-color: var(--col-eee);
+        transition: all 0.5s ease;
+    }
+    .able-click:hover {
+        background-color: var(--col-aaa);
+        transition: all 0.5s ease;
+        cursor: pointer;
+    }
 </style>
-<script  type="module" src="main.js"></script>
+<script type="module" src="main.js"></script>
+
 <head>
     <title id="title"></title>
 </head>
-<script>
-function update(x){
-    var text = pages[x].content();
-    document.getElementById("crazy-wrap").innerHTML = 
-        `<h2>
-            <span style="color:${classcolor[pages[x].class]}">
-                [${classname[pages[x].class]}]
-            </span>
-            ${pages[x].title}
-        </h2>
-        <hr/>`+text
-        .replace(/\[(.*?)\]\((.*?)\)/g,(FF,g1,g2)=>{
-            var arr = Array
-                .from({length:pages.length},(_,i)=>i)
-                .filter(item=>pages[item].title==g1);
-            if(arr.length==0)return `<a style="color:red">${g2}</a>`;
-            return `<a onclick="update(${arr[0]})">${g2}</a>`;
-        })
-        .replace(/\[(.*?)\]/g,(FF,g1)=>{
-            var arr = Array
-                .from({length:pages.length},(_,i)=>i)
-                .filter(item=>pages[item].title==g1);
-            if(arr.length==0)return `<a style="color:red">${g1}</a>`;
-            return `<a onclick="update(${arr[0]})">${g1}</a>`;
-        });
-    document.title = pages[x].title;
-}
-function delay(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-window.setInterval(function() {
-    var temp0=document.getElementsByClassName("err");
-    for(let i=0;i<temp0.length;i++){
-        temp0[i].innerHTML = btoa((Math.random()*1000000).toString(36)).slice(1,5);
-    }
-},30)
-/*window.onload = ()=>{
-    update(0);
-    document.getElementById("vr-button").addEventListener("click",async ()=>{
-        document.getElementById("vr-button").value = "一";
-        await delay(250);
-        document.getElementById("vr-button").value += "二";
-        await delay(250);
-        document.getElementById("vr-button").value += "三";
-        await delay(250);
-        document.getElementById("vr-button").value += "跳";
-        update(document.getElementById("vr-input").value);
-        await delay(300);
-        document.getElementById("vr-button").value = "跳";
-        await delay(250);
-        document.getElementById("vr-button").value += "进";
-        await delay(250);
-        document.getElementById("vr-button").value += "染";
-        await delay(800);
-        document.getElementById("vr-button").value += "缸";
-        await delay(800);
-        document.getElementById("vr-button").value = "启动！";
-    })
-};*/
-</script>
 <body>
     <div class="vegetables-wrap">
-        <div class="vegetables-left" onclick="update(0)">首页</div>
-        <div class="vegetables-left" onclick="update(1)">wiki</div>
-        <div class="vegetables-left" onclick="update(2)">文章</div>
-        <div class="vegetables-left">网站</div>
-        <div class="vegetables-left">444</div>
-        <div class="vegetables-left">555</div>
-        <div class="vegetables-right">
-            <input type="number" id="vr-input"/>
+        <div class="vegetables-left able-click" onclick="update('System.index')">首页</div>
+        <div class="vegetables-left able-click" onclick="update(1)">wiki</div>
+        <div class="vegetables-left able-click" onclick="update(2)">文章</div>
+        <div class="vegetables-left able-click">网站</div>
+        <div class="vegetables-left able-click">444</div>
+        <div class="vegetables-left able-click">555</div>
+        <div class="vegetables-right able-click">
+            <input type="text" id="vr-input"/>
             <input type="button" id="vr-button" value="启动！"/>
         </div>
     </div>
