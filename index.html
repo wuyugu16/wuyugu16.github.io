@@ -1,7 +1,7 @@
 <html>
 <style>
     :root {
-        --v-px: 37px;
+        --vegetable-px: 37px;
         --col-333: #334455;
         --col-aaa: #aabbcc;
         --col-eee: #e0e8ff;
@@ -13,25 +13,25 @@
         margin: 5px;
     }
 
-    .v-wrap {
-        height: var(--v-px);
+    .vegetables-wrap {
+        height: var(--vegetable-px);
         margin: 0px 5px;
         background-color: var(--col-eee);
     }
 
-    .v-left,
-    .v-right {
-        height: var(--v-px);
+    .vegetables-left,
+    .vegetables-right {
+        height: var(--vegetable-px);
         text-align: center;
-        line-height: var(--v-px);
+        line-height: var(--vegetable-px);
         padding: 0 15px;
     }
 
-    .v-left {
+    .vegetables-left {
         float: left;
     }
 
-    .v-right {
+    .vegetables-right {
         float: right;
     }
 
@@ -65,26 +65,22 @@
         cursor: pointer;
     }
 </style>
-<script type="module" src="./modules/main.mjs"></script>
-
+<script type="module" src="main.js"></script>
 
 <head>
     <title id="title"></title>
 </head>
 <body>
-    <div class="v-wrap">
-        <div class="v-left able-click" onclick="update('System.index')">首页</div>
-        <div class="v-left able-click" onclick="update(1)">wiki</div>
-        <div class="v-left able-click" onclick="update(2)">文章</div>
-        <div class="v-left able-click">网站</div>
-        <div class="v-left able-click">444</div>
-        <div class="v-left able-click">555</div>
-        <div class="v-right able-click">
+    <div class="vegetables-wrap">
+        <div class="vegetables-left able-click" onclick="update('System.index')">首页</div>
+        <div class="vegetables-left able-click" onclick="update(1)">wiki</div>
+        <div class="vegetables-left able-click" onclick="update(2)">文章</div>
+        <div class="vegetables-left able-click">网站</div>
+        <div class="vegetables-left able-click">444</div>
+        <div class="vegetables-left able-click">555</div>
+        <div class="vegetables-right able-click">
             <input type="text" id="vr-input"/>
             <input type="button" id="vr-button" value="启动！"/>
-        </div>
-        <div class="v-right able-click">
-            当前页面：<code id="vr-code"></code>
         </div>
     </div>
     <div id="crazy-wrap"></div>

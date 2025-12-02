@@ -1,5 +1,5 @@
 export const funConnections = [
-    ["swd","suoweide"]
+    ["swd","shiwode"]
 ];
 
 export const Utterance = [

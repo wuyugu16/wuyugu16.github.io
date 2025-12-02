@@ -1,6 +1,6 @@
-import {pages,_class} from "./pages.mjs";
+import {pages,_class} from "./modules/pages.mjs";
 console.log(pages);
-export function update(x){
+function update(x){
     var text = pages[x][0];
     let tst = _class[x.substring(0,x.indexOf("."))];
     document.getElementById("crazy-wrap").innerHTML = 
@@ -10,12 +10,10 @@ export function update(x){
         .replace(/\[\[(.*?)\]\]\((.*?)\)/g,(_FF,g1,g2)=>{
             return `<a onclick="update(\"${g1}\")">${g2}</a>`;
         })
-        .replace(/\[\[(.*?)\]\]/g,(_FF,g1)=>{
-            console.log(g1);
-            return `<a onclick="update(\"${g1}\")">${pages[g1][1]}</a>`;
+        .replace(/\[\[(.*?)\]\]/g,(_FF,g1)=>{;
+            return `<a onclick="update(\"${g1}\")">${g1}</a>`;
         });
     document.title = pages[x][1];
-    document.getElementById("vr-code").innerHTML = x;
 }
 function delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -55,6 +53,3 @@ window.onload = ()=>{
         document.getElementById("vr-button").value = "启动！";
     })
 };
-if (typeof window !== 'undefined') {
-    window.update = update;
-}

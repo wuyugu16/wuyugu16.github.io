@@ -22,13 +22,13 @@ export const articleIntroduction = {
 }
 
 export const funList = {
-    "swd" : "SWD",
+    "SWD" : "SWD",
     "suoweide" : "所谓的",
     //"embmq" : "耳膜爆鸣器",
     //"zlyb" : "再来一遍"
 }
 export const funIntroduction = {
-    "swd" : [
+    "SWD" : [
         ["介绍","。。。"]
     ],
     "suoweide" : [
