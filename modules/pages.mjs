@@ -7,13 +7,15 @@ export function getPage(title,x){
 
 export var pages = {};
 
-var Pwr = H=>H.map(x=>`[${x}]`).join(",")
+var Pwr = H=>H.map(x=>`[[${x}]]`).join(",")
 
 Object.keys(basic.funList).forEach(item=>{
     var before = connect.funConnections.filter(x=>x[1]==item)
         .concat(connect.Utterance.filter(x=>x[1]==item))
-        .concat(connect.NickName.filter(x=>x[1]==item));
-    var after = connect.funConnections.filter(x=>x[0]==item);
+        .concat(connect.NickName.filter(x=>x[1]==item))
+        .map(x=>x[0]);
+    var after = connect.funConnections.filter(x=>x[0]==item)
+        .map(x=>x[1]);
     pages[item] = getPage(basic.funList[item],
         basic.funIntroduction[item].concat([
             ["来源",Pwr(before)],
@@ -32,9 +34,9 @@ Object.keys(basic.privateList).forEach(item=>{
 })
 
 Object.keys(basic.personList).forEach(item=>{
-    var utt = connect.Utterance.filter(x=>x[0]==item);
-    var nck = connect.NickName.filter(x=>x[0]==item);
-    var after = connect.funConnections.filter(x=>x[0]==item);
+    var utt = connect.Utterance.filter(x=>x[0]==item).map(x=>x[1]);
+    var nck = connect.NickName.filter(x=>x[0]==item).map(x=>x[1]);
+    var after = connect.funConnections.filter(x=>x[0]==item).map(x=>x[1]);
     pages[item] = getPage(basic.personList[item],[
         ["简介",basic.personIntroduction[item]],
         ["外号",Pwr(nck)],
@@ -44,9 +46,9 @@ Object.keys(basic.personList).forEach(item=>{
 });
 
 function escapeHTML(str) {
-  const div = document.createElement('div');
-  div.textContent = str;
-  return div.innerHTML;
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML.replace(/\[/g,'&#91;').replace(/\]/g,'&#93;');
 }
 
 export var _class = {
@@ -63,9 +65,9 @@ export var _class = {
     ">`;
     let keys = Object.keys(pages).filter((item)=>item.indexOf("Private.")!=0);
     for(let i=0;i<20;i++){
-        res += `<div class="lt-box able-click">`;
         let tpk = keys[Math.floor(Math.random()*keys.length)];
         let tst = _class[tpk.substring(0,tpk.indexOf("."))];
+        res += `<div class="lt-box able-click" onclick="update('${tpk}')">`;
         res += `<h4 style="margin:4px"><span style="color:${tst[1]}">[${tst[0]}]</span>${pages[tpk][1]}</h4>`;
         console.log(pages[tpk][0],tpk)
         res += `<code>${escapeHTML(pages[tpk][0].substring(0,Math.min(50,pages[tpk][0].length)))}...</code>`
