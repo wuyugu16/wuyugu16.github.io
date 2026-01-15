@@ -1,4 +1,77 @@
 <html>
+
+    <!-- markdown-it -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/markdown-it-latex2img@0.0.6/dist/markdown-it-latex2img.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/13.0.2/markdown-it.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <!-- self  -->
+    <link rel="stylesheet" href="./style.css">
+    <script src="./pages/list.js"></script>
+
     <head><title id="title">wuyugu的小站</title></head>
     <body>hello（一无音）</body>
+    <script>
+        async function htmlAdder(html) {
+            const temp = document.createElement('div');
+            temp.innerHTML = html;
+            document.body.innerHTML = "";
+            Array.from(temp.childNodes).forEach(node => {
+                if (node.nodeName !== 'SCRIPT') {
+                    document.body.appendChild(node.cloneNode(true));
+                }
+            });
+            await new Promise(resolve => requestAnimationFrame(resolve));
+            await new Promise(resolve => requestAnimationFrame(resolve));
+            /* 这byd是什么玩意 */
+            Array.from(temp.querySelectorAll('script')).forEach(script => {
+                const newScript = document.createElement('script');
+                if (script.src) newScript.src = script.src;
+                newScript.textContent = script.textContent;
+                document.body.appendChild(newScript);
+            });
+        }
+        const md = window.markdownit({
+            highlight: function (str, lang) {
+                if (lang && hljs.getLanguage(lang)) {
+                    try {
+                        return '<pre class="hljs"><code>' +
+                        hljs.highlight(str, {language: lang, ignoreIllegals: true}).value +
+                        '</code></pre>';
+                    } catch (__) {}
+                }
+                return '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + '</code></pre>';
+            }
+        });
+        const urlParams = new URLSearchParams(window.location.search);
+        var p = urlParams.get("p");
+        if(!p) p = "index";
+        if(!pagesList[p]){
+            alert(`页面${p}不存在！`);
+        }
+        else{
+            let info = pagesList[p];
+            if(info.type == "text"){
+                fetch(`./pages/${p}.txt`)
+                    .then(data=>data.text())
+                    .then(content=>{document.body.textContent = content;})
+                    .catch(err=>alert(`解析${p}出错：${err}`));
+            }
+            else if(info.type == "html"){
+                fetch(`./pages/${p}.html`)
+                    .then(data=>data.text())
+                    .then(content=>{htmlAdder(content);})
+                    .catch(err=>alert(`解析${p}出错：${err}`));
+            }
+            else if(info.type == "markdown"){
+                fetch(`./pages/${p}.md`)
+                    .then(data=>data.text())
+                    .then(content=>{document.body.innerHTML = md.render(content);})
+                    .catch(err=>alert(`解析${p}出错：${err}`));
+                    
+            }
+            else alert(`不存在的页面类型：${info.type}`);
+        }
+    </script>
 </html>

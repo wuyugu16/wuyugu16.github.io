@@ -1,0 +1,29 @@
+<h2>评测模拟：</h2>
+<input id="usr-in" type="text">
+<div id="detail"></div>
+<script>
+    let F = (x,y)=>{
+        document.getElementById("detail").innerHTML = "";
+        y.forEach((item,index)=>{
+            document.getElementById("detail").innerHTML += `<p>#${index+1} ${x[index]}，评测信息：${item}</p>`;
+        });
+    };
+    let WA = "<b style='color:#E74C3C'>WA</b>";
+    let UKE = "<b style='color:#0E1D69'>UKE</b>";
+    let R = n => [...Array(8)].map((_, i) => ((n & 0xFF) >> (7 - i)) & 1 ? UKE : WA);
+    let L = x => Array(8).fill(x);
+    document.getElementById("usr-in").addEventListener("input",(event)=>{
+        let U = document.getElementById("usr-in").value;
+        if(U=="/start")F(R(0),[
+            "你好，人类",
+            "本解密共分16个章节",
+            "在做某个章节时，所有的输出都要加上/ChapterX/...",
+            "每章有三个密钥，会在上一章出现。出现时有提示",
+            "此外，所有的中文输出默认为拼音",
+            "最后，不要上当受骗",
+            "祝你旅途愉快！现在第一个解密，也是Chapter0的入口[number]:",
+            "GSie_d7d20uhWneec76 : 1-1,4-6,3-20,4-5,4-24,4-13,1-12"
+        ]);
+        else F(R(113),L("什么也没有"))
+    })
+</script>
