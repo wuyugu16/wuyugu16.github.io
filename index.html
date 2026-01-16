@@ -1,9 +1,11 @@
+<!DOCTYPE html>
 <html>
-
     <!-- markdown-it -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.27/dist/katex.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/markdown-it-latex2img@0.0.6/dist/markdown-it-latex2img.min.js"></script>
+    <script src="./lib/highlightjs-line-numbers.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/13.0.2/markdown-it.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     
     <!-- self  -->
@@ -12,7 +14,14 @@
 
     <head><title id="title">wuyugu的小站</title></head>
     <body>hello（一无音）</body>
-    <script>
+    <script type="module">
+        import sub_plugin from "./lib/sub.mjs";
+        import sup_plugin from "./lib/sup.mjs";
+        import footnote_plugin from "./lib/footnotes.mjs";
+        import math_plugin from "./lib/katex.mjs";
+        import abbr_plugin from "./lib/abbr.mjs";
+        import container_plugin from "./lib/container.mjs"
+
         async function htmlAdder(html) {
             const temp = document.createElement('div');
             temp.innerHTML = html;
@@ -32,18 +41,40 @@
                 document.body.appendChild(newScript);
             });
         }
+
         const md = window.markdownit({
             highlight: function (str, lang) {
                 if (lang && hljs.getLanguage(lang)) {
                     try {
-                        return '<pre class="hljs"><code>' +
-                        hljs.highlight(str, {language: lang, ignoreIllegals: true}).value +
-                        '</code></pre>';
+                        var res = hljs.highlight(str, {language: lang, ignoreIllegals: true});
+                        const codeWithLineNumbers = hljs.lineNumbersValue(res.value, {
+                            singleLine: true, 
+                            startFrom: 1 
+                        });
+                        console.log(res,codeWithLineNumbers);
+                        return '<pre class="hljs">' + codeWithLineNumbers + '</pre>';
                     } catch (__) {}
                 }
-                return '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + '</code></pre>';
+                return '<pre class="hljs">' + md.utils.escapeHtml(str) + '</pre>';
+            }
+        })
+        .use(sub_plugin).use(sup_plugin)
+        .use(footnote_plugin).use(math_plugin)
+        .use(abbr_plugin).use(container_plugin,"fold",{
+            validate: function(params) {
+                return params.trim().match(/^(warning|success)\[(.*)\]$/);
+            },
+            render: function (tokens, idx) {
+                var m = tokens[idx].info.trim().match(/^(warning|success)\[(.*)\]$/);
+                console.log(tokens[idx].info.trim(),m);
+                if (tokens[idx].nesting === 1) {
+                    return '<details><summary>' + md.renderInline(m[2]) + '</summary><div class="det-in">';
+                } else {
+                    return '</div></details>\n';
+                }
             }
         });
+
         const urlParams = new URLSearchParams(window.location.search);
         var p = urlParams.get("p");
         if(!p) p = "index";
@@ -67,7 +98,7 @@
             else if(info.type == "markdown"){
                 fetch(`./pages/${p}.md`)
                     .then(data=>data.text())
-                    .then(content=>{document.body.innerHTML = md.render(content);})
+                    .then(content=>{document.body.innerHTML = `<div class="markdown">${md.render(content)}`;})
                     .catch(err=>alert(`解析${p}出错：${err}`));
                     
             }

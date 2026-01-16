@@ -1,0 +1,42 @@
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    margin : 5px;
+    padding : 5px;
+}
+.hljs {
+    padding : 5px;
+    margin : 5px;
+    font-family : "Consolas", "Courier New", monospace;
+}
+a {
+    text-decoration: none;
+}
+details {
+    transition: padding 0.5s;
+    margin : 5px;
+    padding-right : 5px;
+}
+details[open] {
+    border-left: 5px solid #ccf;
+    padding : 0px 5px 5px 0px;
+}
+summary {
+    cursor: pointer;
+    padding : 3px;
+    background-color: #ccf;
+}
+.det-in{
+    margin : 5px;
+}
+
+pre td.hljs-ln-numbers {
+    text-align: center;
+    color: #9c9c9c;
+    vertical-align: top;
+    padding-left: 0.5rem;
+    padding-right: 0.8rem;
+}
+pre td,pre table {
+    border: none;
+}
