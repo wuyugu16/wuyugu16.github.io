@@ -5,6 +5,9 @@ var pagesList = {
     object : {type: "html", label: ["解密"], kind: "fun", title: "解密 - Obejct"},
     undefined : {type: "html", label: ["解密"], kind: "fun", title: "解密 - Undefined"},
     null : {type: "html", label: ["解密"], kind: "fun", title: "解密 - NULL"},
+    berzhuan : {type: "markdown", label: ["小六遗产"], kind: "article", title: "《班长转》合集"},
+    L6person : {type: "markdown", label: ["小六遗产"], kind: "article", title: "小六人员名单"},
+    funDic : {type: "html", label: [], kind: "article", title: "梗词典"},
 };
 
 var kinds = {
