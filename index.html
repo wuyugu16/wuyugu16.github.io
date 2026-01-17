@@ -13,7 +13,17 @@
     <script src="./src/list.js"></script>
 
     <head><title id="title">wuyugu的小站</title></head>
-    <body>hello（一无音）</body>
+    <body>
+        <nav class="navbar">
+            <a href="/?p=index">首页</a>
+            <a href="/?p=articles">文章</a>
+            <a href="/?p=tools">工具</a>
+            <a href="/?p=funs">有趣</a>
+            <a href="/?p=website">网站</a>
+            <p style="float:right" id="nav-r"></p>
+        </nav>
+        <div id="content"></div>
+    </body>
     <script type="module">
         import sub_plugin from "./lib/sub.mjs";
         import sup_plugin from "./lib/sup.mjs";
@@ -25,10 +35,10 @@
         async function htmlAdder(html) {
             const temp = document.createElement('div');
             temp.innerHTML = html;
-            document.body.innerHTML = "";
+            document.getElementById("content").innerHTML = "";
             Array.from(temp.childNodes).forEach(node => {
                 if (node.nodeName !== 'SCRIPT') {
-                    document.body.appendChild(node.cloneNode(true));
+                    document.getElementById("content").appendChild(node.cloneNode(true));
                 }
             });
             await new Promise(resolve => requestAnimationFrame(resolve));
@@ -38,7 +48,7 @@
                 const newScript = document.createElement('script');
                 if (script.src) newScript.src = script.src;
                 newScript.textContent = script.textContent;
-                document.body.appendChild(newScript);
+                document.getElementById("content").appendChild(newScript);
             });
         }
 
@@ -105,7 +115,7 @@
                 .catch(err=>alert(`解析${p}出错：${err}`));
             if(info.type == "text"){
                 content
-                    .then(content=>{document.body.textContent = content;});
+                    .then(content=>{document.getElementById("content").textContent = content;});
             }
             else if(info.type == "html"){
                 content
@@ -113,10 +123,11 @@
             }
             else if(info.type == "markdown"){
                 content
-                    .then(content=>{document.body.innerHTML = md.render(content);});
+                    .then(content=>{document.getElementById("content").innerHTML = md.render(content);});
                     
             }
             else alert(`不存在的页面类型：${info.type}`);
         }
+        document.getElementById("nav-r").innerHTML = getTitle(p);
     </script>
 </html>

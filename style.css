@@ -25,26 +25,26 @@ details[open] {
     padding : 0px 5px 5px 0px;
 }
 details[open].warning {
-    border-color : #faa
+    border-color : #fcc
 }
 details[open].info {
-    border-color : #aaf
+    border-color : #ccf
 }
 details[open].success {
-    border-color : #afa
+    border-color : #cfc
 }
 summary {
     cursor: pointer;
     padding : 3px;
 }
 details.warning>summary {
-    background-color: #faa;
+    background-color: #fcc;
 }
 details.info>summary {
-    background-color: #aaf;
+    background-color: #ccf;
 }
 details.success>summary {
-    background-color: #afa;
+    background-color: #cfc;
 }
 .det-in{
     margin : 5px;
@@ -59,4 +59,21 @@ pre td.hljs-ln-numbers {
 }
 pre td,pre table {
     border: none;
+}
+
+.navbar {
+    background-color: #eee;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+.navbar a,.navbar p {
+    float: left;
+    display: block;
+    color: #333;
+    text-align: center;
+    padding: 8px 16px;
+    margin:0px;
+}
+.navbar a:hover {
+    background-color: #aaa;
 }
