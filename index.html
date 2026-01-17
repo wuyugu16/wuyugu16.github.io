@@ -10,7 +10,7 @@
     
     <!-- self  -->
     <link rel="stylesheet" href="./style.css">
-    <script src="./pages/list.js"></script>
+    <script src="./src/list.js"></script>
 
     <head><title id="title">wuyugu的小站</title></head>
     <body>hello（一无音）</body>
@@ -43,17 +43,14 @@
         }
 
         const md = window.markdownit({
-            highlight: function (str, lang) {
+            highlight: function (str, lang, sti="") {
                 if (lang && hljs.getLanguage(lang)) {
-                    try {
-                        var res = hljs.highlight(str, {language: lang, ignoreIllegals: true});
-                        const codeWithLineNumbers = hljs.lineNumbersValue(res.value, {
-                            singleLine: true, 
-                            startFrom: 1 
-                        });
-                        console.log(res,codeWithLineNumbers);
-                        return '<pre class="hljs">' + codeWithLineNumbers + '</pre>';
-                    } catch (__) {}
+                    var res = hljs.highlight(str, {language: lang, ignoreIllegals: true}).value;
+                    var settings = sti.split(" ");
+                    res = hljs.lineNumbersValue(res, {
+                        onlyTable : !settings.includes("line-numbers")
+                    });
+                    return '<pre class="hljs">' + res + '</pre>';
                 }
                 return '<pre class="hljs">' + md.utils.escapeHtml(str) + '</pre>';
             }
@@ -62,18 +59,39 @@
         .use(footnote_plugin).use(math_plugin)
         .use(abbr_plugin).use(container_plugin,"fold",{
             validate: function(params) {
-                return params.trim().match(/^(warning|success)\[(.*)\]$/);
+                return params.trim().match(/^(warning|success|info)(\[(.*)\])?$/);
             },
             render: function (tokens, idx) {
-                var m = tokens[idx].info.trim().match(/^(warning|success)\[(.*)\]$/);
-                console.log(tokens[idx].info.trim(),m);
+                var m = tokens[idx].info.trim().match(/^(warning|success|info)(\[(.*)\])?$/);
                 if (tokens[idx].nesting === 1) {
-                    return '<details><summary>' + md.renderInline(m[2]) + '</summary><div class="det-in">';
+                    let sum = md.renderInline(m[3]?m[3]:"");
+                    if(!sum)sum = {warning:"警告",success:"成功",info:"提示"}[m[1]];
+                    return '<details class="' + m[1] + '"><summary>' + sum + '</summary><div class="det-in">';
                 } else {
                     return '</div></details>\n';
                 }
             }
         });
+        const defaultRender = md.renderer.rules.link_open || 
+            function(tokens, idx, options, env, self) {
+                return self.renderToken(tokens, idx, options);
+            };
+        md.renderer.rules.link_open = function(tokens, idx, options, env, self) {
+            const token = tokens[idx];
+            const hrefIndex = token.attrIndex('href');
+            if (hrefIndex >= 0) {
+                const href = token.attrs[hrefIndex][1];
+                console.log(href);
+                if (href.startsWith("-")) {
+                    const processedHref = "/?p="+href.substring(1);
+                    token.attrs[hrefIndex][1] = processedHref;
+                } else {
+                    token.attrSet('target', '_blank');
+                    token.attrSet('rel', 'noopener noreferrer');
+                }
+            }    
+            return defaultRender(tokens, idx, options, env, self);
+        };
 
         const urlParams = new URLSearchParams(window.location.search);
         var p = urlParams.get("p");
@@ -83,23 +101,19 @@
         }
         else{
             let info = pagesList[p];
+            let content = get(p,info)
+                .catch(err=>alert(`解析${p}出错：${err}`));
             if(info.type == "text"){
-                fetch(`./pages/${p}.txt`)
-                    .then(data=>data.text())
-                    .then(content=>{document.body.textContent = content;})
-                    .catch(err=>alert(`解析${p}出错：${err}`));
+                content
+                    .then(content=>{document.body.textContent = content;});
             }
             else if(info.type == "html"){
-                fetch(`./pages/${p}.html`)
-                    .then(data=>data.text())
-                    .then(content=>{htmlAdder(content);})
-                    .catch(err=>alert(`解析${p}出错：${err}`));
+                content
+                    .then(content=>{htmlAdder(content);});
             }
             else if(info.type == "markdown"){
-                fetch(`./pages/${p}.md`)
-                    .then(data=>data.text())
-                    .then(content=>{document.body.innerHTML = `<div class="markdown">${md.render(content)}`;})
-                    .catch(err=>alert(`解析${p}出错：${err}`));
+                content
+                    .then(content=>{document.body.innerHTML = md.render(content);});
                     
             }
             else alert(`不存在的页面类型：${info.type}`);

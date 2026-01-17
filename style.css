@@ -12,19 +12,39 @@ table, th, td {
 a {
     text-decoration: none;
 }
+p {
+    margin : 5px;
+}
 details {
     transition: padding 0.5s;
     margin : 5px;
     padding-right : 5px;
 }
 details[open] {
-    border-left: 5px solid #ccf;
+    border-left: 5px solid;
     padding : 0px 5px 5px 0px;
+}
+details[open].warning {
+    border-color : #faa
+}
+details[open].info {
+    border-color : #aaf
+}
+details[open].success {
+    border-color : #afa
 }
 summary {
     cursor: pointer;
     padding : 3px;
-    background-color: #ccf;
+}
+details.warning>summary {
+    background-color: #faa;
+}
+details.info>summary {
+    background-color: #aaf;
+}
+details.success>summary {
+    background-color: #afa;
 }
 .det-in{
     margin : 5px;
