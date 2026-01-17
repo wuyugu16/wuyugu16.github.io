@@ -16,9 +16,10 @@
     <body>
         <nav class="navbar">
             <a href="/?p=index">首页</a>
-            <a href="/?p=articles">文章</a>
-            <a href="/?p=tools">工具</a>
-            <a href="/?p=funs">有趣</a>
+            <a href="/?p=kind_article">文章</a>
+            <a href="/?p=kind_tool">工具</a>
+            <a href="/?p=kind_fun">有趣</a>
+            <a href="/?p=kind_label">标签</a>
             <a href="/?p=website">网站</a>
             <p style="float:right" id="nav-r"></p>
         </nav>
@@ -53,6 +54,7 @@
         }
 
         const md = window.markdownit({
+            html: true,
             highlight: function (str, lang, sti="") {
                 if (lang && hljs.getLanguage(lang)) {
                     var res = hljs.highlight(str, {language: lang, ignoreIllegals: true}).value;

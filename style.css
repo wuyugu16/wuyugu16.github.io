@@ -10,7 +10,12 @@ table, th, td {
     font-family : "Consolas", "Courier New", monospace;
 }
 a {
+    transition: color 0.5s;
     text-decoration: none;
+    color: #292;
+}
+a:hover {
+    color: #e66;
 }
 p {
     margin : 5px;

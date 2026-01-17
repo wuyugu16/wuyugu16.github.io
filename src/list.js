@@ -1,10 +1,31 @@
 var pagesList = {
-    object : {type: "html", label: [], kind: "system", title: "Obejct"},
-    test : {type: "text", label: [], kind: "system", title:"111"},
-    test2 : {type: "html", label: ["test0"], kind: "tool", title:"111"},
-    test3 : {type: "markdown", label: ["test0","test1"], kind: "article", title:"111"},
-    test4 : {type: "text", label: ["test1"], kind: "fun", title:"111"}
+    index : {type: "markdown", label: [], kind: "system", title: "首页"},
+    while : {type: "html", label: [], kind: "funs", title: "死循环"},
+    object : {type: "html", label: [], kind: "funs", title: "解密 - Obejct"},
 };
+
+var kinds = {
+    system : ["#aaa","系统"],
+    tool   : ["#4dd","工具"],
+    fun    : ["#d4d","有趣"],
+    label  : ["#dd4","标签"],
+    article: ["#e55","文章"]
+}
+var getKind = k=>`<span style="color:${kinds[k][0]}">[${kinds[k][1]}]</span>`
+function getTitle(p){
+    var info = pagesList[p];
+    return `<b>${getKind(info.kind)} ${info.title}</b>`;
+}
+Object.keys(kinds).forEach(item=>{
+    console.log(item);
+    pagesList[`kind_${item}`] = {
+        type: "markdown",
+        label: ["类别中心页"],
+        kind: "system",
+        title: `${kinds[item][1]}中心页`
+    };
+});
+
 var labels = {};
 Object.keys(pagesList).forEach(item=>{
     pagesList[item].label.forEach(item2=>{
@@ -12,14 +33,15 @@ Object.keys(pagesList).forEach(item=>{
         labels[item2].push(item);
     })
 });
-console.log(labels);
 Object.keys(labels).forEach(item=>{
     pagesList[`label_${item}`] = {
         type: "markdown",
         label: [],
-        kind: "label"
+        kind: "label",
+        title: `标签 \`${item}\` 中心页`
     };
 });
+
 function get(p,info){
     if(info.kind == "label"){
         let content = `### 含有标签 \`${p.substring(6)}\` 的页面：\n`;
@@ -28,16 +50,16 @@ function get(p,info){
         })
         return Promise.resolve(content);
     }
+    if(p.startsWith("kind_")){
+        let kp = p.substring(5);
+        let content = `### 被标注为 ${getKind(kp)} 的页面：\n`;
+        Object.keys(pagesList).forEach(item=>{
+            let info = pagesList[item];
+            if(info.kind == kp)
+                content += `[${info.title}](-${item})  \n`;
+        })
+        return Promise.resolve(content);
+    }
     var filename = `./pages/${p}.${{html:"html",markdown:"md",text:"txt"}[info.type]}`;
     return fetch(filename).then(data=>data.text());
-}
-function getTitle(p){
-    var c = {
-        system : ["#aaa","系统"],
-        tool   : ["#4dd","工具"],
-        fun    : ["#d4d","有趣"],
-        article: ["#e55","文章"]
-    }
-    var info = pagesList[p];
-    return `<b><span style="color:${c[info.kind][0]}">[${c[info.kind][1]}]</span> ${info.title}</b>`;
 }
