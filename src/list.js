@@ -4,6 +4,7 @@ var pagesList = {
     md2html : {type: "html", label: [], kind: "tool", title: "Markdown 转 html"},
     object : {type: "html", label: ["解密"], kind: "fun", title: "解密 - Obejct"},
     undefined : {type: "html", label: ["解密"], kind: "fun", title: "解密 - Undefined"},
+    null : {type: "html", label: ["解密"], kind: "fun", title: "解密 - NULL"},
 };
 
 var kinds = {
