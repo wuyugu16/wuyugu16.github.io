@@ -82,3 +82,9 @@ pre td,pre table {
 .navbar a:hover {
     background-color: #aaa;
 }
+
+blockquote {
+    border-left: #aaa 10px solid;
+    margin: 5px;
+    padding: 10px;
+}

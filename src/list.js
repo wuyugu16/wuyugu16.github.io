@@ -1,7 +1,9 @@
 var pagesList = {
     index : {type: "markdown", label: [], kind: "system", title: "首页"},
-    while : {type: "html", label: [], kind: "funs", title: "死循环"},
-    object : {type: "html", label: [], kind: "funs", title: "解密 - Obejct"},
+    while : {type: "html", label: [], kind: "fun", title: "死循环"},
+    md2html : {type: "html", label: [], kind: "tool", title: "Markdown 转 html"},
+    object : {type: "html", label: ["解密"], kind: "fun", title: "解密 - Obejct"},
+    undefined : {type: "html", label: ["解密"], kind: "fun", title: "解密 - Undefined"},
 };
 
 var kinds = {
@@ -17,7 +19,6 @@ function getTitle(p){
     return `<b>${getKind(info.kind)} ${info.title}</b>`;
 }
 Object.keys(kinds).forEach(item=>{
-    console.log(item);
     pagesList[`kind_${item}`] = {
         type: "markdown",
         label: ["类别中心页"],
@@ -52,7 +53,7 @@ function get(p,info){
     }
     if(p.startsWith("kind_")){
         let kp = p.substring(5);
-        let content = `### 被标注为 ${getKind(kp)} 的页面：\n`;
+        let content = `### 被分类为 ${getKind(kp)} 的页面：\n`;
         Object.keys(pagesList).forEach(item=>{
             let info = pagesList[item];
             if(info.kind == kp)

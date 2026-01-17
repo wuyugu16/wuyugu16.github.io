@@ -1,8 +1,31 @@
-<h2>评测模拟：</h2>
+<h2>题目背景</h2>
+<blockquote>
+<p><strong>喜报</strong>：第 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span> 章出完了！
+我都说了注释没有提示怎么都不信<br>
+</blockquote>
+<p>C++ 是一种高级语言，它是由 Bjarne Stroustrup 于 1979 年在贝尔实验室开始设计开发的。C++ 进一步扩充和完善了 C 语言，是一种面向<strong>对象</strong>（Object）的程序设计语言。C++ 可运行于多种平台上，如 Windows、MAC 操作系统以及 UNIX 的各种版本。</p>
+<h2>题目描述</h2>
+<p>被<a href="https://www.luogu.com.cn/user/1125456" target="_blank" rel="noopener noreferrer">wuyugu</a>吃了</p>
+<h2>输入格式</h2>
+<p>输入是算法的五大核心特性之一。一个算法可以有零个、一个或多个输入，这些输入是算法运行所需的初始数据。输入的设计直接影响算法的功能和适用性。</p>
+<h2>输出格式</h2>
+<p>算法的输出是算法处理输入数据后所产生的结果，输出的正确性和有效性是验证算法是否成功的关键。</p>
+<h2>说明/提示</h2>
+<ol>
+<li>提示里没有任何解<strong>密</strong>元素，仅作为提示（真的没有，信我qwq）。</li>
+<li>输<strong>出</strong> <code>/start</code> ，开始解密。</li>
+<li>并不是所有<strong>材</strong>料都对解密有用。</li>
+<li>题目不会让你输出中文，<strong>如</strong>有则输出拼音</li>
+<li>欢迎使用任<strong>何</strong>手段解密。包括：上网搜，问ai。亲测无用（
+<a href="2594872" target="_blank" rel="noopener noreferrer"></a>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="WHITE"><mi>p</mi><mi>p</mi><mi>o</mi><mi>e</mi><mi>y</mi><mi>r</mi><mi>b</mi><mi>m</mi><mi>s</mi><mn>.3</mn><mi>j</mi><mi>g</mi></mstyle></mrow><annotation encoding="application/x-tex">\color{WHITE}ppoeyrbms.3jg</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="color:WHITE;">pp</span><span class="mord mathnormal" style="margin-right:0.02778em;color:WHITE;">oeyr</span><span class="mord mathnormal" style="color:WHITE;">bm</span><span class="mord mathnormal" style="color:WHITE;">s</span><span class="mord" style="color:WHITE;">.3</span><span class="mord mathnormal" style="margin-right:0.05724em;color:WHITE;">j</span><span class="mord mathnormal" style="margin-right:0.03588em;color:WHITE;">g</span></span></span></span></li>
+</ol>
+
+<h2>评测模拟</h2>
 <input id="usr-in" type="text">
 <div id="detail"></div>
 <script>
-    let F = (x,y)=>{
+    let quitf = (x,y)=>{
         document.getElementById("detail").innerHTML = "";
         y.forEach((item,index)=>{
             document.getElementById("detail").innerHTML += `<p>#${index+1} ${x[index]}，评测信息：${item}</p>`;
@@ -10,11 +33,12 @@
     };
     let WA = "<b style='color:#E74C3C'>WA</b>";
     let UKE = "<b style='color:#0E1D69'>UKE</b>";
-    let R = n => [...Array(8)].map((_, i) => ((n & 0xFF) >> (7 - i)) & 1 ? UKE : WA);
+    let _wa = [WA,WA,WA,WA,WA,WA,WA,WA];
+    let Rn = n => [...Array(8)].map((_, i) => ((n & 0xFF) >> (7 - i)) & 1 ? UKE : WA);
     let L = x => Array(8).fill(x);
     document.getElementById("usr-in").addEventListener("input",(event)=>{
         let U = document.getElementById("usr-in").value;
-        if(U=="/start")F(R(0),[
+        if(U=="/start")quitf(_wa,[
             "你好，人类",
             "本解密共分16个章节",
             "在做某个章节时，所有的输出都要加上/ChapterX/...",
@@ -23,7 +47,172 @@
             "最后，不要上当受骗",
             "祝你旅途愉快！现在第一个解密，也是Chapter0的入口[number]:",
             "GSie_d7d20uhWneec76 : 1-1,4-6,3-20,4-5,4-24,4-13,1-12"
+            /* GSie_d7d20uhWneec76栅栏之后是古诗文网的链接（茅屋为秋风所破歌）
+            * 后面的数字a-b代表第a节第b个字
+            */
         ]);
-        else F(R(113),L("什么也没有"))
+        else if(U=="/Chapter0/84053") quitf(Rn(52),[
+            "em...你真棒。",
+            "好吧，让我们进入情景。",
+            "happy_allen的帽子被偷走了，现场只有一张纸条，写着一首诗",
+            "哇啊啊啊啊，我爱网购啊。从擦啊啊擦，公安我常常。",
+            "安慰安慰我，财务丑闻我。按财务成果，安慰公安网。",
+            "啊我刚刚啊，按高矮成为。呱！",
+            "提示：大写字母",
+            "GUGUAGUGUA!"
+            /* 取拼音首字母，w->u，然后按照RNA（AUGC）进行翻译。
+            * 蛋白质使用字母代号
+            * 注意：从起始密码子翻译，到终止密码子结束
+            */
+        ]);
+        else if(U=="/Chapter0/MTNDPYSLTR") quitf(Rn(178),[
+            "你是最棒的核糖体。让然，看来w是可以去掉的",
+            "话说happy_allen顺着这个密码找到了一个房子",
+            "房子里有一道题目：我们将可以倒过来的十进制数叫做孤寡数",
+            "这个数减去原来的数的差为它的孤寡差",
+            "例如：188690，倒过来是069881，孤寡差为118809",
+            "问：1 ~ 10^1145-1范围内所有孤寡数的孤寡差之和:) mod 1e9+7", //在整活里面藏正经题这一块
+            "这道题太难了，happy_allen不会。快帮助她（划掉）他吧！",
+            "GUGUAGUGUA!！!!！！!!!！！！!！！！!!!!!！!！"
+            /* 正经题较为简单，按照数位算即可（标称在团队文件，1~10^2-1时正确）
+            * #8的叹号分中英文。英文最先出现代表1，二进制即可
+            * w可以去掉的暗示下文
+            */
+        ]);
+        else if(U=="/Chapter0/54704372") quitf(Rn(211),[
+            "happyallen说：wow!",
+            "你已经过了三个谜题了。4WXYNZ5AQHTZJMPEXCAOJOF",
+            "这层可不简单。加密了??层！",
+            "输入/Chapter0/54704372/Tip1~3获得提示！K4S4ITZFYVLS23F7GV6G6PGUE4WGZ",
+            "我向你保证这不是拼图题",
+            "...L2FPRXS3ZAHFUS2O7PEM4WC2R",
+            "...ZFYXLS3BD7FQ2M6LLMX42XY2===",
+            "是拼字题（"
+            /* 首先就要拼字
+            * 四段拼起来base32是提示：由三字单词开头
+            */
+        ]);
+        else if(U=="/Chapter0/54704372/Tip1") quitf(_wa,[
+            "y=((((32x-29+91x-109)/3+(-32x+45)/1+(132x+134)/(-1))/(-3)-(((23x+14-(40x+63))*7)/(-7)+(-21x-42)/7+9x-27-(45x-36)-((-15x+40)+(-6x-12)-(-94x+20)/(-2)))",
+            "-((((-16x-180)/(-4))/(-1)+(-27x+34)-(-70x+36)-(-326286x+437838)/6)/(-6))/(-10))/(-6))/8+(((((-17x-35)*1-((-20x+27)+91x+130))/(-1))/8)*(-1)+(((23x+4",
+            "7-(-3x+69))/(-1)-((-14x+5)-(-50x-35)+(19x+279)/1))/(-9))/3)*(-2)+(((-41x+8)-(-74x+13)-(38x-28-(12x+14))-((-240x-348)/3)/(-4))*(-6))/(-3)-((((13x+2)",
+            "*(-1)+(-48x)-(2189x-1847))/9)/5+(((-29x-2)*1+31x-16+(-242x+268))/(-10))*1)+((-36x-41)-(4x-8)-((-15x+1)+(-68x-32))+48x-47+(-49x+16)+(-42x-6)+(-23x+5",
+            "6)+((-7x-27)-(-20x-11))*3-((-50x+8)+(-3492x+2449))/(-7))/(-10)-((44x-56)/2-(-234x+117)/9-((0x-504)/1)/7+(5x-22+19x-134)/4+((28960x-6720)/5)/(-8))/(-",
+            "10)-(((39x+5-(28x-33)-(-3x-5)*(-17)+(-24x-33)+56x+68-((-18x-18)-(15x-44))-(42x-25+(-16x+4)-(-11x-4)*(-2)-(10x-32-(19x+6)-((-11x-27)-(3x+62))))-((-34",
+            "x+36)-(-77x-9)-(38x+32-(-18x+3))-((-34x+21)-(166x-127))/4+((-38x-42)-(-43x-77)-((-5x-37)+171x+296))/(-7)))*(-8))/(-8)+(((8x-3)*2-((-26x+4)-(-57x+10)",
+            ")-(36x-37-(-69x+193))/(-5))/(-1)-((-40x-205)/(-5)-((-36x-36)-(-76x-40))+9x-17+(-25x+41)+(-5856x+2823)/(-3))/(-8))/(-8)+((23x+48)*(-1)-((-7x-26)-(-40"
+        ]);
+        else if(U=="/Chapter0/54704372/Tip2") quitf(_wa,[
+            "4x-328)))/(-10)+((-45x+43)+76x-90-((-19x+42)-(-51x+88)))*22-((24x+20-(-13x+10)+(12295x-3410)/5)/(-6))/(-8)-((((-31x-25)+(-819x-1725))/5)/(-10)+((352x",
+            "+64)/8)/1+(-6x-204)/(-6)-((-50x+37)+151x+30)-((138x+42)/(-6)+32x+36-(-11x+64)-((-185x-135)/(-5)-((-22x-27)-(-15x-49)))+(11x+45-(7x+46))*(-12)+(84x+60)",
+            "/6-(532x-184)/(-4)))-(((8x-11)*1+(-26x+27)-(25x-11)-(0x+10-(37x-27)+43x+34+351x+252))/8-(6x-34-(6x-7)+(-105x+231)/7+(21x+19-(-14x+334))/7-(35x-9+(-73x",
+            "-24)-(84x+5)*(-1)-(46x+5+(-31x+4)-(12x+34-(2x-13)))))+((100x-48)/4+(12x+31)*(-1)+((-29x+20)-(-26x-11))*2+((297x)/9-(43x-16-(574x-76)))/4)/4+((-40x-40)",
+            "/(-8)-((-26x+28)-(-81x-14))-((-10x-37)-(-3x-83)+(-32x-40)+41x-133))/(-2)-(((266x+245)/7+40x-5-(69x+11))*(-2)-((-3x+4)*2+(-45x+14)+15x-21-((-47x-21)*1-",
+            "(47x-1+(-118x-8)))))-((((-35x+33)-(-125x-300))/(-9)-(42x+9-(0x+35)-(-82x-68)/(-2)))*(-1)+(((25x+36)*(-1))*3)/(-3)+(((-8x+17)*(-1))*1)*2)-((((((-16x-9)",
+            "*(-8))/8)*10)/(-5)+12x-31-(16x-59)+39x-6-(10x+27)-((-32x+20)+22x-25-((-27x-18)-(-13x-32)))+((-47x-27)-(-33x+232))/(-7)+((-35x+15)-(-37x+44))*1)*(-2)+(",
+            "40x-116)/4+(-4x+40)+32x-19-((-2x+17)+(-5x-37)-(33x-15+(-65x+2)))-(((-26x-2)-(274x+178))/3)/(-5)+(((8x-3)/1)*2-(46x+34-(41x+83)-(-11x-42)*1))*10+(((-46"
+        ]);
+        else if(U=="/Chapter0/54704372/Tip3") quitf(_wa,[
+            "还剩一点：x-45)-(-112x+27))/3+((-3x+7)*20)/2-(2x-14+(-38x+58)-(176x-464)/(-8)-((-2484x+855)/(-9))*(-1)))/5)))",
+            "慢慢算去吧（笑",
+            "length q caller lc and print chr ord q eval ge and print chr ord q lc eval and print chr ord qw q uc q and print chr ord q each le and print chr ord",
+            "qw q lc q and print chr ord q dump and and print chr length q q getprotoent ref getservbyport scalar ioctl getgrgid kill exit getpwnam endservent not",
+            "next semop caller setgrent connect q and print chr ord q cmp lc and print chr length q q splice srand getservbyname setnetent ne reset endprotoent",
+            "foreach scalar rewinddir cos setnetent not else getprotobyname q and print chr ord qw q le q and print chr ord qw q bind q and print chr ord q each",
+            "ne and print chr ord qw q le q and print chr ord q lt eval and print chr ord q chr lc and print chr ord q dbmopen and and print chr ord qw q ne q and",
+            "print chr ord q my m and print chr ord qw q warn q "
+            /* 表达式算出来是y=15x+12，是仿射密码的密钥
+            * 最后一段是perl/PPencode，可以得出仿射密码的密文
+            */
+        ]);
+        else if(U=="/Chapter0/lieutenantbutxrbhgs") quitf(Rn(187),[
+            "yeah",
+            "oh",
+            "opus",
+            "what",
+            "well",
+            "oooooooooooooooooooooooooooooo",
+            "get",
+            "len"
+            /* 三字单词：lie :)
+            * 这个简单，取每行字符个数
+            */
+        ]);
+        else if(U=="/Chapter0/424443033") quitf(Rn(58),[
+            "第一个Chap1密钥是R0gvJHBaNi1VdnM7P2VKOUFoMGp0c10vNUNzfT8+WysvMVxRb1cwfCRUZ1RVbVtLMHgvV3ZCNjo5R2o1a1x",
+            "wOkIoJFxcMzA/JEZdREF4bSk7LDpSZENiU3hNXUA9WkI3ZheDuanNeiRongYaoShanQuMj9qXmhRLmUkPFdmVVpab0hJL2FoRVd",
+            "dP2x4PCwmW0lJK0hcXUpedkAkTStAczlSSShanQuZheDuanNeiRongS90P1wrLCl4O0EnQU9sajRLOkdFSC1PLlhaRFhSOTIzPV",
+            "wxelYvSXJ2PyVqcTw8O2VGQZheDuanDeDongXiYeBuNengYaoyppKStoN089PyU/PTM7SE1lZ193RXJzUSZpR0lMXjtL_qwqqwq",
+            "细节决定成败 ——————————————————————————————————————————————————————————————————————————————————— 佚名",
+            "找规律吧！2, 23, 3, 31, 11, a, b, c",
+            ";(iE>S\\y4mXBU+6Q@@Ft/.+C?n^!lY6L3b\\UBh1rVRXEmo[#AguE1q[Ss:_Fk4At@!RCBjZ_VNQBSQ(M:aGX/-^bV = d",
+            "输出a+b*c*d"
+            /* 第一个密钥是多层base编码。注意最开始的字符串里有“ZheDuanNeiRongYaoShanQu”等三处混淆
+            * 第二个直接上oeis.org查
+            * 第三个也是多层base，解码后是注重过程。所以按照解码顺序排列base??，得到d
+            */
+        ]);
+        else if(U=="/Chapter0/9285329183") quitf(Rn(42),[
+            "好吧，你以为我会给你Chap1第二个密钥的提示吗",
+            "不可能（笑",
+            "给你几个无关提示：提前produce 26-1=5*5",
+            "在方格中探寻图像吧！",
+            "cefgiklpqstuz cglptvxy",
+            "cdfgklorsvxy cdfghijkloprt",
+            "cdghijkloprtu adinorvxy",
+            "cfghijklpstuz cfgklpsuvxy"
+            /* 首先画一个没有w的5*5方格，然后提前produce
+            * p r o d u
+            * c e a b f
+            * g h i j k
+            * l m n q s
+            * t v x y z
+            * 然后拼图，得到NLOPFIHU
+            */
+        ]);
+        else if(U=="760066129"/*孤寡数之和*/) quitf(Rn(80),[
+            "THEHTEHTEHTEHEHTTHTTTEHHETHEEHTETHTHEHTHTHTHEHTHTHTETHE",
+            "MSMUSUMSMUSUMSMUMUUUUSUSMSUMSMUMSUUMSMSMUSUMSMUSMUSSSUM",
+            "OFOFOOFOOOOOFFFFFFFFFFOFOOOFOFOFOFOOFFFFOFOFOFOOOOOFFOF",
+            "JUDGNGDUGNINGGDUUIDGIUDNIJDGNIDGJNDIGINDIGNDIGINJUDGING",
+            "SERBNMRESNBMSBSMUBNMBSUSRNSREMENUNUUNMNMSEENRMBUNUMBERS",
+            "SISIISIIIIIISISISISISSSSSSSSSSSSISIISISISISIISIIISIISIS",
+            "C1C1CCCCCC1C1C11CCCC1C1C11C11111111111C1C1C1C1C1C111CC1",
+            "-2-2-2-222-2-2-2-222-2-2-2-2-----2-2-2-2-22-2-2----22-2"
+            /* 取末尾即可
+            */
+        ]);
+        else if(U=="NLOPFIHU") quitf(Rn(47),[
+            "happy_allen是一名优秀的oier",
+            "但是ta在[数据损坏e4f4950?d32303232e79a845433?33137]炸了：）",
+            "为了满足ta的遗憾",
+            "请将那道题的正确答案！作为c1-3",
+            ".",
+            "%",
+            "\"",
+            "\\"
+            /* 原十六进制： 4e4f49502d32303232e79a845433233137
+            * 损坏部分不影响解码
+            * 数据点取noi.cn
+            */
+        ]);
+        else if(U=="/Chapter1/:Er3long4teng4fei1%855558341955") quitf(Rn(0),[
+            "没做完！"
+        ]);
+        else quitf(Rn(113),L("什么也没有"));
+        /* 迷惑qwq */
+
+        /*
+        * 待加入：时间（例如只有在X月才能获得线索）
+        */
+
+        /*
+        * 预计Chap14会用Chap0-13的定义/设定。
+        * 已定义：
+        * 孤寡数
+        * 细节决定成败 ——佚名
+        * happy_allen的帽子被偷
+        */
     })
+
 </script>
