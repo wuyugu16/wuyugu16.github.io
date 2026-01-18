@@ -106,13 +106,14 @@
 
         const urlParams = new URLSearchParams(window.location.search);
         var p = urlParams.get("p");
+        var mdl = urlParams.get("pass")=="_Blue_Empty_";
         if(!p) p = "index";
         if(!pagesList[p]){
             alert(`页面${p}不存在！`);
         }
         else{
             let info = pagesList[p];
-            let content = get(p,info)
+            let content = get(p,info,mdl)
                 .catch(err=>alert(`解析${p}出错：${err}`));
             if(info.type == "text"){
                 content
