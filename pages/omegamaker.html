@@ -1,0 +1,34 @@
+PrSS <input type="text" id="level"/> 阶空白生成器<br/>
+参数：<input type="number" id="val"><br/>
+<p id="res"></p>
+<p id="link"></p>
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    var p = urlParams.get("ord");
+    let F = (_)=>{
+        let ord = document.getElementById("level").value.split(",");
+        if(!ord)document.getElementById("res").value = "";
+        else{
+            let open;
+            if(ord[ord.length-1] == 1){
+                open = ord.slice(0,ord.length-1);
+            }
+            else {
+                let br = ord.length-1;
+                for(;ord[br]>=ord[ord.length-1];br--);
+                console.log(br,ord.slice(0,br));
+                open = [].concat.apply(ord.slice(0,br),
+                    Array(+document.getElementById("val").value).fill(
+                        ord.slice(br,ord.length-1)
+                    )
+                );
+            }
+            document.getElementById("res").innerHTML = `展开结果：${open.join(",")}`;
+            document.getElementById("link").innerHTML = `<a href="./?p=omegamaker&ord=${open.join(",")}">结果</a>`
+        }
+    };
+    document.getElementById("level").value = p;
+    document.getElementById("level").addEventListener("change",F);
+    document.getElementById("val").addEventListener("change",F);
+    F();
+</script>

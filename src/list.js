@@ -8,7 +8,9 @@ var pagesList = {
     berzhuan : {type: "markdown", label: ["小六遗产"], kind: "article", title: "《班长转》合集", hide:1},
     L6person : {type: "markdown", label: ["小六遗产"], kind: "article", title: "小六人员名单", hide:1},
     funDic : {type: "html", label: [], kind: "article", title: "梗词典", hide:1},
-    humanfat : {type: "markdown", label: ["小六遗产"], kind: "article", title: "无题"}
+    humanfat : {type: "markdown", label: ["小六遗产"], kind: "article", title: "人类发言", hide:1},
+    omegamaker : {type: "html", label: [], kind: "tool", title: "Prss生成器"},
+    aiarticle1 : {type: "markdown", label: [], kind: "article", title: "炸裂文章（ai）", hide:1}
 };
 
 var kinds = {
