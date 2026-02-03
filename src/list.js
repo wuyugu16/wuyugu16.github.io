@@ -1,5 +1,6 @@
 var pagesList = {
     index : {type: "markdown", label: [], kind: "system", title: "首页"},
+    Hide : {type: "markdown", label: [], kind: "system", title: "Hide", hide:1},
     while : {type: "html", label: [], kind: "fun", title: "死循环"},
     md2html : {type: "html", label: [], kind: "tool", title: "Markdown 转 html"},
     object : {type: "html", label: ["解密"], kind: "fun", title: "解密 - Obejct"},
@@ -9,8 +10,10 @@ var pagesList = {
     L6person : {type: "markdown", label: ["小六遗产"], kind: "article", title: "小六人员名单", hide:1},
     funDic : {type: "html", label: [], kind: "article", title: "梗词典", hide:1},
     humanfat : {type: "markdown", label: ["小六遗产"], kind: "article", title: "人类发言", hide:1},
-    omegamaker : {type: "html", label: [], kind: "tool", title: "Prss生成器"},
-    aiarticle1 : {type: "markdown", label: [], kind: "article", title: "炸裂文章（ai）", hide:1}
+    omegamaker : {type: "html", label: [], kind: "tool", title: "?阶生成器"},
+    omegalinker : {type: "html", label: [], kind: "tool", title: "Prss生成器"},
+    aiarticle1 : {type: "markdown", label: [], kind: "article", title: "炸裂文章（ai）", hide:1},
+    website : {type: "html", label: [], kind: "tool", title: "网址们"}
 };
 
 var kinds = {
@@ -50,12 +53,20 @@ Object.keys(labels).forEach(item=>{
     };
 });
 
-function get(p,info,m=0){
+function get(p,info){
+    if(p == "Hide"){
+        let content = `### 所有页面\n`;
+        Object.keys(pagesList).forEach(item=>{
+            let info = pagesList[item];
+            content += `[${info.title}](${item})  \n`;
+        })
+        return Promise.resolve(content);
+    }
     if(info.kind == "label"){
         let content = `### 含有标签 \`${p.substring(6)}\` 的页面：\n`;
         labels[p.substring(6)].forEach(item=>{
-            if(m || !pagesList[item].hide)
-                content += `[${pagesList[item].title}](-${item})  \n`;
+            if(!pagesList[item].hide)
+                content += `[${pagesList[item].title}](${item})  \n`;
         })
         return Promise.resolve(content);
     }
@@ -64,8 +75,8 @@ function get(p,info,m=0){
         let content = `### 被分类为 ${getKind(kp)} 的页面：\n`;
         Object.keys(pagesList).forEach(item=>{
             let info = pagesList[item];
-            if((m || !info.hide) && info.kind == kp)
-                content += `[${info.title}](-${item})  \n`;
+            if((!info.hide) && info.kind == kp)
+                content += `[${info.title}](${item})  \n`;
         })
         return Promise.resolve(content);
     }

@@ -93,8 +93,8 @@
             const hrefIndex = token.attrIndex('href');
             if (hrefIndex >= 0) {
                 const href = token.attrs[hrefIndex][1];
-                if (href.startsWith("-")) {
-                    const processedHref = "/?p="+href.substring(1);
+                if (pagesList[decodeURIComponent(href)]) {
+                    const processedHref = "/?p="+href;
                     token.attrs[hrefIndex][1] = processedHref;
                 } else {
                     token.attrSet('target', '_blank');
@@ -106,14 +106,13 @@
 
         const urlParams = new URLSearchParams(window.location.search);
         var p = urlParams.get("p");
-        var mdl = urlParams.get("pass")=="_BerErbReb_";
         if(!p) p = "index";
         if(!pagesList[p]){
             alert(`页面${p}不存在！`);
         }
         else{
             let info = pagesList[p];
-            let content = get(p,info,mdl)
+            let content = get(p,info)
                 .catch(err=>alert(`解析${p}出错：${err}`));
             if(info.type == "text"){
                 content

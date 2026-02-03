@@ -1,0 +1,31 @@
+PrSS <input type="text" id="level"/> 生成器<br/>
+参数：<input type="number" id="val"><br/>
+<div id="show">
+    <input type="button" id="go"><br/>
+</div>
+<script>
+    let F = (_)=>{
+        let ord = document.getElementById("level").value.split(",");
+        let w = setInterval(()=>{
+            let open;
+            if(ord[ord.length-1] == 1){
+                open = ord.slice(0,ord.length-1);
+            }
+            else {
+                let br = ord.length-1;
+                for(;ord[br]>=ord[ord.length-1];br--);
+                open = [].concat.apply(ord.slice(0,br),
+                    Array(+document.getElementById("val").value).fill(
+                        ord.slice(br,ord.length-1)
+                    )
+                );
+            }
+            ord = Array.from(open);
+            document.getElementById("show").innerHTML = ord.join(",");
+            console.log(ord);
+            if(!ord[0])clearInterval(w);
+        },10);
+        console.log(w);
+    };
+    document.getElementById("go").addEventListener("click",F);
+</script>
