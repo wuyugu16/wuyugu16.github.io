@@ -17,15 +17,18 @@ Here is the content.
 
 **111**
 
-$\int ^{114514} _{0} \sin x dx \sum ^{\infty}_{i=0}i^2$
+$\int ^{114514} _{0} \frac{1}{2} $
 
 12344[^1]
 ```cpp
 #include<bits/stdc++.h>
 
-
+using 112;
 ```
 
-1^2_3
+:::prove[证明]
+qwq
+:::
+
 
 [^1]: 3624175

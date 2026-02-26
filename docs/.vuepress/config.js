@@ -3,19 +3,14 @@ import {defaultTheme} from "@vuepress/theme-default";
 import {defineUserConfig} from "vuepress";
 import {viteBundler} from "@vuepress/bundler-vite";
 
-import sub_plugin from "markdown-it-sub";
-import sup_plugin from "markdown-it-sup";
 import footnote_plugin from "markdown-it-footnote";
-import math_plugin from "markdown-it-math";
+import math_plugin from 'markdown-it-math/temml';
 import container_plugin from "markdown-it-container";
-import hljs from "highlight.js";
 
 export default defineUserConfig({
 	MarkdownOptions: {},
 	extendsMarkdown: md => {
-		md.use(sub_plugin)
-			.use(sup_plugin)
-			.use(footnote_plugin)
+		md.use(footnote_plugin)
 			.use(math_plugin)
 			.use(container_plugin, "fold", {
 				validate: function (params) {
@@ -47,20 +42,6 @@ export default defineUserConfig({
 			})
 			.set({
 				html: true,
-				highlight: function (str, lang, sti = "") {
-					if (lang && hljs.getLanguage(lang)) {
-						var res = hljs.highlight(str, {
-							language: lang,
-							ignoreIllegals: true,
-						}).value;
-						return '<pre class="hljs">' + res + "</pre>";
-					}
-					return (
-						'<pre class="hljs">' +
-						md.utils.escapeHtml(str) +
-						"</pre>"
-					);
-				},
 			});
 	},
 
@@ -99,8 +80,9 @@ export default defineUserConfig({
 			getInfo: ({frontmatter, title, data}) => ({
 				title,
 				date: frontmatter.date || null,
-				category: frontmatter.category || [],
+				category: frontmatter.category || "",
 				tag: frontmatter.tag || [],
+				hide: !!frontmatter.hide,
 			}),
 
 			// Generate excerpt for all pages excerpt those users choose to disable
@@ -109,7 +91,10 @@ export default defineUserConfig({
 			category: [
 				{
 					key: "category",
-					getter: page => [page.frontmatter.category || ""],
+					getter: page =>
+						page.frontmatter.hide
+							? []
+							: [page.frontmatter.category || ""],
 					layout: "Category",
 					itemLayout: "Category",
 					frontmatter: () => ({
@@ -122,7 +107,8 @@ export default defineUserConfig({
 				},
 				{
 					key: "tag",
-					getter: page => page.frontmatter.tag || [],
+					getter: page =>
+						page.frontmatter.hide ? [] : page.frontmatter.tag || [],
 					layout: "Tag",
 					itemLayout: "Tag",
 					frontmatter: () => ({
@@ -139,8 +125,7 @@ export default defineUserConfig({
 			type: [
 				{
 					key: "article",
-					// Remove archive articles
-					filter: page => true,
+					filter: page => !page.frontmatter.hide,
 					layout: "Article",
 					frontmatter: () => ({
 						title: "Articles",
@@ -183,5 +168,49 @@ export default defineUserConfig({
 		}),
 	],
 
-	bundler: viteBundler(),
+	bundler: viteBundler({
+		vuePluginOptions: {
+			template: {
+				compilerOptions: {
+					// 将所有 MathML 标签视为自定义元素，跳过 Vue 组件解析
+					isCustomElement: tag =>
+						tag.startsWith("math") ||
+						[
+							"math",
+							"maction",
+							"annotation",
+							"annotation-xml",
+							"menclose",
+							"merror",
+							"mfenced",
+							"mfrac",
+							"mi",
+							"mmultiscripts",
+							"mn",
+							"mo",
+							"mover",
+							"mpadded",
+							"mphantom",
+							"mprescripts",
+							"mroot",
+							"mrow",
+							"ms",
+							"semantics",
+							"mspace",
+							"msqrt",
+							"mstyle",
+							"msub",
+							"msup",
+							"msubsup",
+							"mtable",
+							"mtd",
+							"mtext",
+							"mtr",
+							"munder",
+							"munderover",
+						].includes(tag),
+				},
+			},
+		},
+	}),
 });

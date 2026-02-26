@@ -4,6 +4,7 @@ category: A
 tag:
   - tag A
   - tag B
+hide: true
 ---
 
 # Article 1
