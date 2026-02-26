@@ -1,0 +1,1 @@
+import{_ as t,c as e,o as a}from"./app-CHjXDM11.js";const o={};function r(c,s){return a(),e("div")}const l=t(o,[["render",r]]),i=JSON.parse('{"path":"/tag/","title":"Tags","lang":"zh-CN","frontmatter":{"title":"Tags","sidebar":false,"blog":{"type":"category","key":"tag"},"layout":"Tag"},"headers":[],"git":{},"filePathRelative":null}');export{l as comp,i as data};
