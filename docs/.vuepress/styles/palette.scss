@@ -1,0 +1,74 @@
+.vp-navbar {
+	position: static;
+}
+main.vp-page,main.vp-home {
+	padding-top: 0px;
+}
+main {
+	table, th, td {
+		border: 1px solid black;
+		border-collapse: collapse;
+		margin : 5px;
+		padding : 5px;
+	}
+	.hljs {
+		padding : 5px;
+		margin : 5px;
+		font-family : "Consolas", "Courier New", monospace;
+	}
+	a {
+		transition: color 0.5s;
+		text-decoration: none;
+		color: #292;
+	}
+	a:hover {
+		color: #e66;
+	}
+	p {
+		margin : 5px;
+	}
+	details {
+		transition: padding 0.5s;
+		margin : 5px;
+		padding-right : 5px;
+	}
+	details[open] {
+		border-left: 5px solid;
+		padding : 0px 5px 5px 0px;
+	}
+	details[open].warn {
+		border-color : #fcc
+	}
+	details[open].info {
+		border-color : #ccf
+	}
+	details[open].prove {
+		border-color : #cfc
+	}
+	summary {
+		cursor: pointer;
+		padding : 3px;
+	}
+	details.warn>summary {
+		background-color: #fcc;
+	}
+	details.info>summary {
+		background-color: #ccf;
+	}
+	details.prove>summary {
+		background-color: #cfc;
+	}
+	.det-in{
+		margin : 5px;
+	}
+
+	pre td,pre table {
+		border: none;
+	}
+
+	blockquote {
+		border-left: #aaa 10px solid;
+		margin: 5px;
+		padding: 10px;
+	}
+}
