@@ -54,18 +54,24 @@ export default defineUserConfig({
 		navbar: [
 			"/",
 			{
-				text: "文章",
+				text: "所有页面",
 				link: "/article/",
 			},
 			{
-				text: "类别",
+				text: "分类",
 				link: "/category/",
 			},
 			{
 				text: "标签",
 				link: "/tag/",
 			},
+			{
+				text: "网站",
+				link: "/website",
+			},
 		],
+		lastUpdated: false,
+   	 	contributors: false,
 	}),
 
 	plugins: [
@@ -116,7 +122,7 @@ export default defineUserConfig({
 						sidebar: false,
 					}),
 					itemFrontmatter: name => ({
-						title: `Tag ${name}`,
+						title: `${name}`,
 						sidebar: false,
 					}),
 				},
@@ -162,6 +168,15 @@ export default defineUserConfig({
 							new Date(pageA.frontmatter.date).getTime()
 						);
 					},
+				},
+				{
+					key: "hider",
+					filter: page => !!page.frontmatter.hide,
+					layout: "Hider",
+					frontmatter: () => ({
+						title: "Hiders",
+						sidebar: false,
+					}),
 				},
 			],
 			hotReload: true,

@@ -5,11 +5,8 @@ main.vp-page,main.vp-home {
 	padding-top: 0px;
 }
 main {
-	table, th, td {
-		border: 1px solid black;
-		border-collapse: collapse;
-		margin : 5px;
-		padding : 5px;
+	tr {
+		background-color: #f8f8f8 !important;
 	}
 	.hljs {
 		padding : 5px;
@@ -18,7 +15,7 @@ main {
 	}
 	a {
 		transition: color 0.5s;
-		text-decoration: none;
+		text-decoration: none !important;
 		color: #292;
 	}
 	a:hover {
