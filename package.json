@@ -19,6 +19,7 @@
     "vuepress": "2.0.0-rc.20"
   },
   "dependencies": {
+    "cnchar": "^3.2.6",
     "highlight.js": "^11.11.1",
     "jquery": "^4.0.0",
     "markdown-it-container": "^4.0.0",

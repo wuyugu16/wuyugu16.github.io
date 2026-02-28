@@ -62,6 +62,7 @@ let _fail = L(UKE);
 let Rn = n =>
 	[...Array(8)].map((_, i) => (((n & 0xff) >> (7 - i)) & 1 ? UKE : WA));
 $(function(){
+	document.getElementById("usr-in").addEventListener("input", event => {
         let U = document.getElementById("usr-in").value;
         if(U=="/start")quitf(_wa,[
             "你好，人类",
@@ -238,7 +239,6 @@ $(function(){
         * 细节决定成败 ——佚名
         * happy_allen的帽子被偷
         */
-        
 	});
 });
 

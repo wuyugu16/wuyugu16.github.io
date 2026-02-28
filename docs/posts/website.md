@@ -15,7 +15,7 @@ title: 网站
 [数列查询](https://oeis.org/)
 [自指函数图像](https://tuppers-formula.ovh/)
 [wireword](https://danprince.github.io/wireworld/)
-[生命游戏](http://nonoas.gitee.io/webproj/)
+[生命游戏](https://playgameoflife.com/)
 [mathigon](https://mathigon.org/)
 [随机函数](https://cichlider.github.io/Math-Enigma/)
 [网络画板](https://www.netpad.net.cn/svg.html)
@@ -34,6 +34,7 @@ title: 网站
 [css动画](https://css-animations.io/)
 [css弹性盒](https://flexboxfroggy.com/)
 [js小游戏](https://lab.reaal.me/jsrobot/#level=1&language=en)
+[图论](https://csacademy.com/app/graph_editor/)
 - 理
 [电路模拟](https://cc.xiaogd.net/)
 [逻辑电路模拟](https://tool.chipdebug.com/logicsim/)
@@ -49,11 +50,15 @@ title: 网站
 [bili视频下载](https://snapany.com/zh)
 ## 趣
 - 专
+[狗屁不通文章生成](https://suulnnka.github.io/BullshitGenerator/index.html)
+[国际象棋](https://www.chess.com/zh)
+[名字竞技场](http://namerena.github.io/)
 [emoji合成](https://emoji6.com/emojimix/)
 [模拟黑客](https://hackertyper.com/)
 [堆沙子](https://thisissand.com/)
 [解密](https://nazo.one-story.cn/)
 [扫雷](https://www.minesweeper.cn/)
+[扫雷2](https://www.revolversweeper.com/)
 [尺规作图游戏](https://www.euclidea.xyz/)
 [名字竞技场](https://namerena.github.io/#)
 [钢笔练习](https://bezier.method.ac/)
@@ -73,6 +78,7 @@ title: 网站
 [沙画](https://thisissand.com/)
 [水墨画](http://jacksonpollock.org/)
 [oi-2048](https://ak-ioi.com/apps/oi-2048/)
+[朝代-2048](https://oprilzeng.com/2048/)
 [js消消乐](https://js.wdn.md/)
 [2048](https://2048game.com/)
 [毒鸡汤](https://blemon.net/dusoup/)
@@ -80,6 +86,9 @@ title: 网站
 [长修狗](https://longdogechallenge.com/)
 [文字密室逃脱](http://nodes-escape.hzfe.org/)
 [跑酷](https://gdcolon.itch.io/treacheroustrials)
+[膜拜Siyuan](https://lmoliver.github.io/mosiyuan/index.html)
+[代码打字](https://www.speedcoder.net/)
+[名字竞技场](https://deepmess.com/namerena/)
 - 杂
 [neal.fun](https://neal.fun/)
 [各种各样1](https://toms.toys/)
@@ -93,3 +102,5 @@ title: 网站
 [小说](https://www.luogu.com.cn/problem/T695337)
 ## OI之物
 [试炼场备份](https://www.luogu.me/paste/62wjg0ak)
+## 单调队列者也
+[1](https://www.luogu.me/article/6cr49f6k)

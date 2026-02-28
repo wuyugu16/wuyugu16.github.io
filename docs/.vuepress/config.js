@@ -67,7 +67,7 @@ export default defineUserConfig({
 			},
 			{
 				text: "网站",
-				link: "/website",
+				link: "/posts/website",
 			},
 		],
 		lastUpdated: false,
