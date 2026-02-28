@@ -48,7 +48,6 @@ $\color{WHITE} 5. 尝试输出587385 $
 
 
 <script setup>
-import $ from "jquery"
 let quitf = (x, y) => {
 	document.getElementById("detail").innerHTML = "";
 	y.forEach((item, index) => {
@@ -66,7 +65,7 @@ let _ok = L(AC);
 let _fail = L(UKE);
 let Rn = n =>
 	[...Array(8)].map((_, i) => (((n & 0xff) >> (7 - i)) & 1 ? UKE : WA));
-$(function(){
+document.addEventListener('DOMContentLoaded', function() {
 	document.getElementById("usr-in").addEventListener("input", event => {
         let U = document.getElementById("usr-in").value;
         if(U=="587385")quitf(Rn(65),[

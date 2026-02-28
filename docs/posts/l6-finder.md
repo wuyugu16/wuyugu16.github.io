@@ -15,7 +15,6 @@ hide: true
 
 <script setup>
 import cnchar from 'cnchar';
-import $ from 'jquery';
 var ans = [];
 var key = [
     ["jc","swd","gb","lsq","cy","bk","sff","bc"],
@@ -43,7 +42,7 @@ function uniqueBy(arr, keyFn) {
     return false;
   });
 }
-$(function(){
+document.addEventListener('DOMContentLoaded', function() {
     var x = (event)=>{
         let rr = document.getElementById("usr-input").value;
         let r = cnchar.spell(rr,'first','low').toLowerCase();
