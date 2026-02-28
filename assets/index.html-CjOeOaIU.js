@@ -1,0 +1,1 @@
+import{_ as e,c as t,o as r}from"./app-CxgtW0Ij.js";const a={};function i(o,s){return r(),t("div")}const n=e(a,[["render",i]]),l=JSON.parse('{"path":"/hider/","title":"Hiders","lang":"zh-CN","frontmatter":{"title":"Hiders","sidebar":false,"blog":{"type":"type","key":"hider"},"layout":"Hider"},"headers":[],"git":{},"filePathRelative":null}');export{n as comp,l as data};
