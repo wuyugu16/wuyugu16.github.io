@@ -15,6 +15,7 @@ hide: true
 
 <script setup>
 import cnchar from 'cnchar';
+import { onMounted } from 'vue';
 var ans = [];
 var key = [
     ["jc","swd","gb","lsq","cy","bk","sff","bc"],
@@ -42,7 +43,7 @@ function uniqueBy(arr, keyFn) {
     return false;
   });
 }
-document.addEventListener('DOMContentLoaded', function() {
+onMounted(() => {
     var x = (event)=>{
         let rr = document.getElementById("usr-input").value;
         let r = cnchar.spell(rr,'first','low').toLowerCase();
@@ -64,6 +65,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     };
     document.getElementById("usr-input").addEventListener("input",x);
-    $('input[type=radio][name=r1]').on("change",x);
+    document.getElementById("i1").addEventListener("change",x);
+    document.getElementById("i2").addEventListener("change",x);
+    document.getElementById("i3").addEventListener("change",x);
 });
 </script>

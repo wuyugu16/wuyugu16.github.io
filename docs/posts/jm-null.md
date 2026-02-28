@@ -37,6 +37,7 @@ C不知道，wuyugu其实根本不在家，（未完待续）
 
 
 <script setup>
+import { onMounted } from 'vue';
 let quitf = (x, y) => {
 	document.getElementById("detail").innerHTML = "";
 	y.forEach((item, index) => {
@@ -54,7 +55,7 @@ let _ok = L(AC);
 let _fail = L(UKE);
 let Rn = n =>
 	[...Array(8)].map((_, i) => (((n & 0xff) >> (7 - i)) & 1 ? UKE : WA));
-document.addEventListener('DOMContentLoaded', function() {
+onMounted(() => {
 	document.getElementById("usr-in").addEventListener("input", event => {
 		let U = document.getElementById("usr-in").value;
 		if (U == "德州市" || U == "德州")
