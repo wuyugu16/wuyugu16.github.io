@@ -68,5 +68,6 @@ onMounted(() => {
     document.getElementById("i1").addEventListener("change",x);
     document.getElementById("i2").addEventListener("change",x);
     document.getElementById("i3").addEventListener("change",x);
+    document.getElementById("i4").addEventListener("change",x);
 });
 </script>

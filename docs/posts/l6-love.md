@@ -209,6 +209,10 @@ x.forEach(i1=>{
     })
 })
 
+add(18,29,2);
+add(45,27,3);
+add(19,22,2);
+
 const getColor = (value) => {
     switch (value) {
         case 0: return '#ebedf0'; // 最浅
