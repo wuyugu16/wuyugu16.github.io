@@ -37,7 +37,7 @@ title: 网站
 [图论](https://csacademy.com/app/graph_editor/)
 - 理
 [电路模拟](https://cc.xiaogd.net/)
-[逻辑电路模拟](https://tool.chipdebug.com/logicsim/)
+[电子工程师在线工具](https://tool.chipdebug.com/)
 [化学实验逝](https://hx.nobook.com/chemical/new?moduleId=9)
 [化学式绘制](https://indrawforweb.integle.com/)
 [元素周期表](https://ptable.com/?lang=zh-hans#)
