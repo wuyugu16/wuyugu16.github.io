@@ -14,7 +14,6 @@ hide: true
         margin: 0px 0.12px;
         font-size: 9px;
     }
-    /* 标题行：保持极简，只显示维度 */
     .info-bar {
       display: flex;
       justify-content: space-between;
@@ -41,42 +40,34 @@ hide: true
       font-weight: 500;
       color: #1f2328;
     }
-
-    /* 网格外层容器：纵向排列行，带间隙，可横向滚动 */
     .heatmap {
-      display: inline-flex;        /* 宽度根据内容自适应，方便滚动 */
+      display: inline-flex;
       flex-direction: column;
-      gap: 2px;                    /* 行与行之间的间隔 */
+      gap: 2px;
       background: transparent;
       border-radius: 12px;
       max-width: 100%;
       padding: 4px 0;
     }
-
-    /* 每一行：横向排列单元格，带间隙，禁止换行 */
     .row {
       display: flex;
       flex-direction: row;
-      gap: 2px;                    /* 单元格之间的间隔 */
-      flex-wrap: nowrap;           /* 保证50个格子排成一行 */
+      gap: 2px;
+      flex-wrap: nowrap;
     }
-
-    /* 单元格：固定大小的圆角方形色块，无收缩，有平滑的 hover 效果 */
     .cell {
-      flex: 0 0 auto;              /* 防止挤压或拉伸，保持方形 */
+      flex: 0 0 auto;
       width: 10px;
       height: 10px;
-      border-radius: 3px;          /* 圆角方形 */
+      border-radius: 3px;
     }
 
-    /* 悬停时轻微放大，增加精致感（不影响布局） */
     .cell:hover {
       transform: scale(2);
       box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
       z-index: 5;
     }
 
-    /* 极简图例：一行小色块，放在右下角 */
     .legend {
       display: flex;
       align-items: center;
@@ -101,7 +92,6 @@ hide: true
       background-color: currentColor;
     }
 
-    /* 自定义各图例颜色（与 getColor 保持一致） */
     .legend-swatch.level0 { background-color: #ebedf0; }
     .legend-swatch.level1 { background-color: #9be9a8; }
     .legend-swatch.level2 { background-color: #40c463; }

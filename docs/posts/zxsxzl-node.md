@@ -1,7 +1,8 @@
 ---
 data: 2026-2-28
 category: note
-tag: 数学
+tag: 
+ - 数学
 ---
 # 笔记
 ## 1 预备知识
